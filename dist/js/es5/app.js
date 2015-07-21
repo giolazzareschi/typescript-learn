@@ -1,0 +1,1 @@
+"use strict";var Calculator=function(){function t(t,u){this.x=t}return t.prototype.qualquercoisa=function(t){},t}();
