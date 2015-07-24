@@ -32,7 +32,7 @@ gulp.task('tpl', function(){
       noRedeclare: true, // Avoid duplicate declarations 
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest('dev/js/'));
+    .pipe(gulp.dest('dev/js/tpl'));
 });
 
 gulp.task('ts5', function() {
