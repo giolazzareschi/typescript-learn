@@ -1,3 +1,4 @@
+/// <reference path="typings/angular2/angular2.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
     switch (arguments.length) {
@@ -9,12 +10,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var angular2_1 = require('typings/angular2/angular2');
-// Annotation section
+var angular2_1 = require('angular2/angular2');
+var Foo = require('dev/ts/Foo');
 var MyAppComponent = (function () {
     function MyAppComponent() {
+        var bb = new Foo.Bar();
+        console.log(bb.age);
         this.name = 'Alice';
     }
+    Object.defineProperty(MyAppComponent.prototype, "userAge", {
+        get: function () {
+            return this.idade;
+        },
+        enumerable: true,
+        configurable: true
+    });
     MyAppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app'

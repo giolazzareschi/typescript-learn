@@ -11,7 +11,10 @@
     </head>
     <body>
 		<my-app></my-app>
-		<script>System.import('app');</script>
+		<script>
+			System.paths['dev/ts/*'] = 'dev/js/es5/*.js';
+			System.import('app');
+		</script>
 		<script type="text/javascript" src="./dev/js/lib/handlebars-v3.0.3.js"></script>
 		<script type="text/javascript" src="./dev/js/tpl/templates.js"></script>
     </body>

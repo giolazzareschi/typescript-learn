@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
 var ts = require('gulp-typescript');
+var typescript = require('gulp-tsc');
 
 gulp.task('default', function() {
   // place code for your default task here
@@ -39,10 +40,27 @@ gulp.task('ts5', function() {
   return gulp.src('dev/ts/*.ts')
     .pipe(ts({
       target : 'ES5',
-      declarationFiles : false,
-      noExternalResolve: true
+      removeComments : true,
+      declarationFiles : true,
+      noExternalResolve: false,
+      module: 'commonjs',
+      emitDecoratorMetadata  : true,
+      experimentalDecorators : true
     }))
     .pipe(gulp.dest('dev/js/es5'));
+});
+
+gulp.task('app5', function() {
+  return gulp.src('*.ts')
+    .pipe(ts({
+      target : 'ES5',
+      removeComments : true,
+      declarationFiles : true,
+      module: 'commonjs',
+      emitDecoratorMetadata  : true,
+      experimentalDecorators : true
+    }))
+    .pipe(gulp.dest(''));
 });
 
 gulp.task('ts6', function() {
@@ -73,11 +91,12 @@ gulp.task('watch5', function () {
     gulp.watch(['dev/ts/*.ts'], ['ts5']);
     gulp.watch(['dev/js/es5/*.js'], ['js5']);
     gulp.watch(['dev/tpl/*.hbs'], ['tpl']);
+    gulp.watch(['*.ts'], ['app5']);
 });
 
 gulp.task('watch6', function () {
     gulp.watch(['dev/css/*.scss'], ['sass']);
-    gulp.watch(['dev/ts/*.ts'], ['ts6']);
+    gulp.watch(['dev/ts/*.ts','*.ts'], ['ts6']);
     gulp.watch(['dev/js/es6/*.js'], ['js6']);
-    gulp.watch(['dev/tpl/*.hbs'], ['tpl']);
+    gulp.watch(['dev/tpl/*.hbs'], ['tpl']);    
 });

@@ -1,0 +1,1 @@
+tsc --module commonjs --target es5 --experimentalDecorators app.ts
